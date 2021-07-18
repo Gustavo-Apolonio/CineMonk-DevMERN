@@ -1,6 +1,6 @@
-# Welcome to MERN Repository
+# CineMonk - DevMERN
 
-## I'll update this while I'll be doing it.
+## Desenvolvido por [_Gustavo Apolonio_](https://github.com/Gustavo-Apolonio)
 
-> Description
-> > Repository to learn MERN Stack (MongoDb, Express, ReactJs and NodeJs)
+## Baseado no [_figma_](https://www.figma.com/file/JPXDwLqVgkkqVRGJGZA2rf/Imers%C3%A3o-MERN-Jul21?node-id=60%3A411) de [_Bruno de Oliveira_](https://github.com/BrunoOliveiraSP)
+
