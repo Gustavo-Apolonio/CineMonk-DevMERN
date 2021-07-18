@@ -1,0 +1,19 @@
+// datas
+
+use("ingressos")
+
+var dataAtual = (new Date()).toISOString().substr(0, 10);
+
+const aggregation = [
+  { $match: { data: { $gte: dataAtual  } } },
+  { $group: { _id: "$data" } },
+  { $sort: { _id: 1 } },
+  { $limit: 7 }
+];
+
+db.sessoes.aggregate(aggregation)
+
+// filmes
+
+db.sessoes.find({ data: dataAtual }, { _id: 0, filme: 1 })
+          .sort({ 'filme.nome': 1 })
