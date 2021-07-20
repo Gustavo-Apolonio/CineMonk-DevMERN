@@ -1,67 +1,80 @@
-const pad = (value, length) => value.toString().padStart(2, "0");
+const pad = (valor, tamanho) => valor.toString().padStart(2, "0");
 
-const toISOBRString = function (date) {
-  return (
-    date.getFullYear() +
+const toISOBR = function (data) {
+  let novaData =
+    data.getFullYear() +
     "-" +
-    pad(date.getMonth() + 1) +
+    pad(data.getMonth() + 1) +
     "-" +
-    pad(date.getDate()) +
+    pad(data.getDate()) +
     "T" +
-    pad(date.getHours()) +
+    pad(data.getHours()) +
     ":" +
-    pad(date.getMinutes()) +
+    pad(data.getMinutes()) +
     ":" +
-    pad(date.getSeconds()) +
+    pad(data.getSeconds()) +
     "." +
-    (date.getMilliseconds() / 1000).toFixed(3) +
-    "Z"
-  );
+    (data.getMilliseconds() / 1000).toFixed(3);
+  return novaData;
 };
 
-const toResponse = (datas) => {
-  let newDatas = [];
-  let diasSemana = [
-    "Domingo",
-    "Segunda",
-    "Terça",
-    "Quarta",
-    "Quinta",
-    "Sexta",
-    "Sábado",
-  ];
-  let meses = [
-    "JANEIRO",
-    "FEVEREIRO",
-    "MARÇO",
-    "ABRIL",
-    "MAIO",
-    "JUNHO",
-    "JULHO",
-    "AGOSTO",
-    "SETEMBRO",
-    "OUTUBRO",
-    "NOVEMBRO",
-    "DEZEMBRO",
-  ];
-  datas.forEach((date) => {
-    let data = new Date(date.data);
-    let diaSemana = diasSemana[data.getDay()];
-    let dia = data.getDate();
-    let mes = meses[data.getMonth()];
-
-    let newData = {
-      diaSemana,
-      dia,
-      mes,
-    };
-
-    newDatas.push(newData);
-  });
-
-  newDatas[0].diaSemana = "HOJE";
-
-  return newDatas;
+const dia = function (data) {
+  let resp = new Date(toISO(data)).getDate();
+  return resp;
 };
 
-export { toISOBRString, toResponse };
+const diaSemana = function (data) {
+  let diaSemana = new Date(toISO(data)).getDay();
+  switch (diaSemana) {
+    case 0:
+      return "Domingo";
+    case 1:
+      return "Segunda";
+    case 2:
+      return "Terça";
+    case 3:
+      return "Quarta";
+    case 4:
+      return "Quinta";
+    case 5:
+      return "Sexta";
+    case 6:
+      return "Sábado";
+  }
+};
+
+const mes = function (data) {
+  let mes = new Date(toISO(data)).getMonth();
+  switch (mes) {
+    case 0:
+      return "Janeiro";
+    case 1:
+      return "Fevereiro";
+    case 2:
+      return "Março";
+    case 3:
+      return "Abril";
+    case 4:
+      return "Maio";
+    case 5:
+      return "Junho";
+    case 6:
+      return "Julho";
+    case 7:
+      return "Agosto";
+    case 8:
+      return "Setembro";
+    case 9:
+      return "Outubro";
+    case 10:
+      return "Novembro";
+    case 11:
+      return "Dezembro";
+  }
+};
+
+const toISO = function (data) {
+  return data.length === 10 ? `${data}T00:00:00` : data;
+};
+
+export { toISOBR, dia, diaSemana, mes };
