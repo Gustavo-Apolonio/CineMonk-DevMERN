@@ -9,8 +9,8 @@ export default class SessoesService {
 
     let datas = await db.listarDatas(data.substr(0, 10));
 
-    console.log(datas)
-    
+    console.log(datas);
+
     let resp = datas.map((item) => {
       return {
         data: item.data,

@@ -1,5 +1,5 @@
 import SessoesDatabase from "./database/sessoesDatabase.js";
 
-export default function IOC(conn) {
-  SessoesDatabase.injectDB(conn);
+export default function IOC(connectionString) {
+  SessoesDatabase.injectDB(connectionString);
 }

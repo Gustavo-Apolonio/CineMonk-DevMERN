@@ -1,8 +1,8 @@
 let db;
 
 export default class SessoesDatabase {
-  static injectDB(conn) {
-    db = conn.db("ingressos").collection("sessoes");
+  static injectDB(connectionString) {
+    db = connectionString.db("ingressos").collection("sessoes");
   }
 
   async listarDatas(data) {

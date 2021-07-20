@@ -3,8 +3,8 @@ import MongoDB from "mongodb";
 import IOC from "./ioc.js";
 import setarRotas from "./routes.js";
 
-function iniciarAPI(conn) {
-  IOC(conn);
+function iniciarAPI(connectionString) {
+  IOC(connectionString);
 
   const server = express();
 
